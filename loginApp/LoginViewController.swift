@@ -8,33 +8,32 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-
+    
+    private let userName = "User"
+    private let password = "Password"
+    
     @IBAction func loginButtonTapped() {
-        if userNameTextField.text == "User" && passwordTextField.text == "Password" {
+        if userNameTextField.text == userName && passwordTextField.text == password {
             performSegue(withIdentifier: "loginSegue", sender: nil)
         } else {
-            let alertController = UIAlertController(title: "Invalid login or password", message: "Please, enter the correct login and password", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-                self.passwordTextField.text = ""
-            }
-            alertController.addAction(okAction)
-            present(alertController, animated: true)
+            showAlert(title: "Invalid login or password", description: "Please, enter the correct login and password", nameOfButton: "OK")
         }
     }
     
     @IBAction func forgotUsernameTapped() {
-        let alertController = UIAlertController(title: "Oops", message: "Your username is User 😀", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
+        showAlert(title: "Oops", description: "Your username is \(userName) 😀", nameOfButton: "OK")
     }
     
     @IBAction func forgotPasswordTapped() {
-        let alertController = UIAlertController(title: "Oops", message: "Your username is Password 😀", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
+        showAlert(title: "Oops", description: "Your username is \(password) 😀", nameOfButton: "OK")
+    }
+    
+    private func showAlert(title: String, description: String, nameOfButton: String) {
+        let alertController = UIAlertController(title: title, message: description, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: nameOfButton, style: .default)
         alertController.addAction(okAction)
         present(alertController, animated: true)
     }
