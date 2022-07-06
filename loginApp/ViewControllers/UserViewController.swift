@@ -10,10 +10,11 @@ import UIKit
 class UserViewController: UIViewController {
     
     @IBOutlet weak var welcomeLabel: UILabel!
-    var user: String!
+    
+    var user: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        welcomeLabel.text = "Welcome, \(user!)!"
+        welcomeLabel.text = "Welcome, \(user ?? "")!"
     }
 }
