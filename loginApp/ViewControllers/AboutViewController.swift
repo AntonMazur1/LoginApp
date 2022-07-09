@@ -8,17 +8,19 @@
 import UIKit
 
 class AboutViewController: UIViewController {
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    var user: PersonDataModel?
     
-    private let aboutMe = AboutMe.getInfoAbout()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let addInfoVC = segue.destination as? AdditionalnfoViewController else { return }
+        addInfoVC.user = user
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        nameLabel.text = aboutMe.name
-        descriptionLabel.text = aboutMe.description
+        nameLabel.text = user?.person.name
+        descriptionLabel.text = user?.person.description
     }
-
 }

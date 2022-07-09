@@ -48,15 +48,15 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Forgor username?"/>
                                         <connections>
-                                            <action selector="forgotUsernameTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vxe-lj-yom"/>
+                                            <action selector="registerDataForgotten:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k2S-di-tiz"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yku-Xa-WAD">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yku-Xa-WAD">
                                         <rect key="frame" x="176" y="0.0" width="134" height="48"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Forgor password?"/>
                                         <connections>
-                                            <action selector="forgotPasswordTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="iRE-5O-FdM"/>
+                                            <action selector="registerDataForgotten:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gce-Mf-hVa"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -157,7 +157,7 @@
             </objects>
             <point key="canvasLocation" x="1554.375" y="68.661971830985919"/>
         </scene>
-        <!--Anton Mazur-->
+        <!--About View Controller-->
         <scene sceneID="VZ7-p3-dWr">
             <objects>
                 <viewController id="ENs-fs-6Ts" customClass="AboutViewController" customModule="loginApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -166,7 +166,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Owy-Vg-p40" customClass="GradientView" customModule="loginApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="499"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -178,7 +178,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="P0f-wv-JGA">
-                                <rect key="frame" x="32" y="80" width="256" height="76"/>
+                                <rect key="frame" x="32" y="136" width="256" height="76"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j16-ZH-i3t">
                                         <rect key="frame" x="0.0" y="0.0" width="256" height="37"/>
@@ -207,7 +207,14 @@
                             <constraint firstItem="10z-7y-euw" firstAttribute="trailing" secondItem="Owy-Vg-p40" secondAttribute="trailing" id="nHJ-WS-e0C"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Anton Mazur" image="person.fill" catalog="system" id="FdW-5f-5kp"/>
+                    <navigationItem key="navigationItem" id="FXo-Cp-X1t">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="person.fill" catalog="system" id="xQ2-No-43g">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="zsb-At-85p" kind="show" identifier="" id="tRO-ua-LMH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionLabel" destination="b0z-ia-9h4" id="ezr-Jr-eMY"/>
                         <outlet property="nameLabel" destination="j16-ZH-i3t" id="Xr1-tr-NCv"/>
@@ -215,12 +222,61 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Hd-Pb-OoJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2302.5" y="68.661971830985919"/>
+            <point key="canvasLocation" x="3300" y="68.661971830985919"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Additionalnfo View Controller-->
+        <scene sceneID="XIS-Kk-E3e">
+            <objects>
+                <viewController id="zsb-At-85p" customClass="AdditionalnfoViewController" customModule="loginApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EhM-RQ-UqM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9y-2k-L3g" customClass="GradientView" customModule="loginApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" systemColor="systemPurpleColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" systemColor="systemTealColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="KlU-Jj-595">
+                                <rect key="frame" x="32" y="192" width="256" height="164"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="X4C-vk-L7z"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="f9y-2k-L3g" firstAttribute="leading" secondItem="X4C-vk-L7z" secondAttribute="leading" id="1y6-eM-6us"/>
+                            <constraint firstItem="KlU-Jj-595" firstAttribute="height" secondItem="EhM-RQ-UqM" secondAttribute="height" multiplier="0.3" id="BVd-QD-xan"/>
+                            <constraint firstItem="KlU-Jj-595" firstAttribute="width" secondItem="EhM-RQ-UqM" secondAttribute="width" multiplier="0.8" id="GsC-kR-r6s"/>
+                            <constraint firstAttribute="bottom" secondItem="f9y-2k-L3g" secondAttribute="bottom" id="KwV-aj-1yp"/>
+                            <constraint firstItem="KlU-Jj-595" firstAttribute="centerX" secondItem="EhM-RQ-UqM" secondAttribute="centerX" id="LkO-mm-5hK"/>
+                            <constraint firstItem="KlU-Jj-595" firstAttribute="centerY" secondItem="EhM-RQ-UqM" secondAttribute="centerY" id="Umh-CH-psX"/>
+                            <constraint firstItem="f9y-2k-L3g" firstAttribute="top" secondItem="EhM-RQ-UqM" secondAttribute="top" id="oLi-gp-pk3"/>
+                            <constraint firstItem="f9y-2k-L3g" firstAttribute="trailing" secondItem="X4C-vk-L7z" secondAttribute="trailing" id="uWi-xS-hFG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="E30-jN-zPi"/>
+                    <connections>
+                        <outlet property="addInfoLabel" destination="KlU-Jj-595" id="0CZ-vL-iGX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VEA-5q-ldl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4125" y="68.661971830985919"/>
+        </scene>
+        <!--Tab Bar View Controller-->
         <scene sceneID="RJt-Gq-IMb">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ip6-5y-CiX" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ip6-5y-CiX" customClass="TabBarViewController" customModule="loginApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="5UB-sH-jFZ"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="F8p-ER-K8D">
@@ -230,12 +286,31 @@
                     </tabBar>
                     <connections>
                         <segue destination="Psu-y7-Gfh" kind="relationship" relationship="viewControllers" id="sem-lI-qK3"/>
-                        <segue destination="ENs-fs-6Ts" kind="relationship" relationship="viewControllers" id="v7W-CJ-jSD"/>
+                        <segue destination="SzB-UM-0lY" kind="relationship" relationship="viewControllers" id="v7W-CJ-jSD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtk-Aa-wbs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="771" y="69"/>
+        </scene>
+        <!--Anton Mazur-->
+        <scene sceneID="FEF-MV-28I">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SzB-UM-0lY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Anton Mazur" image="person.fill" catalog="system" id="FdW-5f-5kp"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1hs-jM-lzS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ENs-fs-6Ts" kind="relationship" relationship="rootViewController" id="WQd-6J-x5y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ee-xE-2U3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2302.5" y="68.661971830985919"/>
         </scene>
     </scenes>
     <resources>

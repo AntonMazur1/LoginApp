@@ -12,49 +12,51 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    private let loginData = LoginData.getData()
-    
-    private var userName: String {
-        self.loginData.userName
-    }
-    
-    private var password: String {
-        self.loginData.password
-    }
+    private let personData = PersonDataModel.getData()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let tabBarVC = segue.destination as! UITabBarController
-        let userVC = tabBarVC.viewControllers![0] as! UserViewController
-        userVC.user = userNameTextField.text
+        guard let tabBarVC = segue.destination as? UITabBarController else { return }
+        guard let viewControllers = tabBarVC.viewControllers else { return }
+        
+        for viewController in viewControllers {
+            if let userVC = viewController as? UserViewController {
+                userVC.user = personData
+            } else if let navigationVC = viewController as? UINavigationController {
+                guard let aboutVC = navigationVC.topViewController as? AboutViewController else { return }
+                aboutVC.user = personData
+            }
+        }
     }
     
-    private func showAlert(title: String, description: String, nameOfButton: String) {
+    private func showAlert(title: String,
+                           description: String,
+                           nameOfButton: String,
+                           textField: UITextField? = nil) {
         let alertController = UIAlertController(title: title, message: description, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: nameOfButton, style: .default)
+        let okAction = UIAlertAction(title: nameOfButton, style: .default) { _ in
+            textField?.text = ""
+        }
         alertController.addAction(okAction)
         present(alertController, animated: true)
     }
     
     @IBAction func loginButtonTapped() {
-        if userNameTextField.text == userName && passwordTextField.text == password {
+        if userNameTextField.text == personData.userName && passwordTextField.text == personData.password {
             performSegue(withIdentifier: "loginSegue", sender: nil)
         } else {
-            showAlert(title: "Invalid login or password", description: "Please, enter the correct login and password", nameOfButton: "OK")
-            passwordTextField.text = ""
+            showAlert(title: "Invalid login or password", description: "Please, enter the correct login and password", nameOfButton: "OK", textField: passwordTextField)
         }
     }
     
-    @IBAction func forgotUsernameTapped() {
-        showAlert(title: "Oops", description: "Your username is \(userName) 😀", nameOfButton: "OK")
+    @IBAction func registerDataForgotten(_ sender: UIButton) {
+        sender.tag == 0
+        ? showAlert(title: "Oops!", description: "Your username is \(personData.userName)😀", nameOfButton: "OK")
+        : showAlert(title: "Oops!", description: "Your password is \(personData.password)😀", nameOfButton: "OK")
     }
     
-    @IBAction func forgotPasswordTapped() {
-        showAlert(title: "Oops", description: "Your username is \(password) 😀", nameOfButton: "OK")
-    }
     
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         userNameTextField.text = ""
         passwordTextField.text = ""
     }
-    
 }
